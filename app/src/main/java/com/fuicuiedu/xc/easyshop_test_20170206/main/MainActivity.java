@@ -19,6 +19,7 @@ import com.fuicuiedu.xc.easyshop_test_20170206.main.shop.ShopFragment;
 import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 public class MainActivity extends AppCompatActivity {
@@ -80,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
     //未登录时的ViewPager适配器
@@ -105,6 +105,21 @@ public class MainActivity extends AppCompatActivity {
             return 4;
         }
     };
+
+    //textview点击事件
+    @OnClick({R.id.tv_shop,R.id.tv_message,R.id.tv_mail_list,R.id.tv_me})
+    public void onClick(TextView view){
+        for(int i = 0;i<textViews.length;i++){
+            textViews[i].setSelected(false);
+            textViews[i].setTag(i);
+        }
+        //设置选择效果
+        view.setSelected(true);
+        //参数false代表瞬间切换，而不是平滑过渡
+        viewPager.setCurrentItem((Integer) view.getTag(),false);
+        //设置一下toolbar的title
+        tv_title.setText(textViews[(Integer) view.getTag()].getText());
+    }
 
     //点击2次返回，退出程序
     @Override

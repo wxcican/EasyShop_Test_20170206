@@ -30,5 +30,6 @@ dependencies {
     //ButterKnife
     compile 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
-
+    //circularimageview圆形头像
+    compile 'com.pkmmte.view:circularimageview:1.1'
 }
